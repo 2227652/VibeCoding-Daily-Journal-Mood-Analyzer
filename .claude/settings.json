@@ -1,0 +1,22 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$(date '+%Y-%m-%d %H:%M:%S') | Modified: ${CLAUDE_TOOL_INPUT_FILE_PATH:-unknown}\" >> CHANGELOG.md"
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "sentiment": {
+      "command": "node",
+      "args": ["./mcp-sentiment-server.js"],
+      "description": "Local sentiment analysis MCP server — replace analyzeTextMood() with real NLP"
+    }
+  }
+}
